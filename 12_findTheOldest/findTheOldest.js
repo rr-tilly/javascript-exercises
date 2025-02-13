@@ -1,19 +1,13 @@
-const calcAge = function (died, born) {
-    if (!died) {
-        died = new Date().getFullYear();
-    };
-    return died - born;
-};
 const findTheOldest = function (people) {
 
-    const oldestPerson = people.reduce((currentEldest, personForComparison) => {
-        const currentEldestAge = calcAge(currentEldest.yearOfDeath, currentEldest.yearOfBirth);
-        const personForComparisonAge = calcAge(personForComparison.yearOfDeath, personForComparison.yearOfBirth);
+    return people.reduce((oldestYet, a) => {
+        const currentYear = new Date().getFullYear();
 
-        return currentEldestAge < personForComparisonAge ? personForComparison : currentEldest;
-    });
+        const ageofA = (a.yearOfDeath ??= currentYear) - a.yearOfBirth;
+        const ageofOldest = (oldestYet.yearOfDeath ??= currentYear) - oldestYet.yearOfBirth;
 
-    return oldestPerson;
+        return ageofOldest > ageofA ? oldestYet : a;
+    })
 
 };
 
