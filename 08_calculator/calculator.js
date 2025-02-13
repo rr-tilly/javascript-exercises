@@ -1,35 +1,21 @@
 const add = function (a, b) {
-  let sum = a + b;
-  return sum;
+  return a + b
 };
 
 const subtract = function (a, b) {
-  let diff = a - b;
-  return diff;
+  return a - b;
 };
 
 const sum = function (a) {
-  let sum = 0;
-  if (a.length === 0) return 0;
-  for (const x of a) {
-    sum += x;
-  }
-  return sum;
+  return a.reduce((total, num) => total + num, 0);
 };
 
-const multiply = function (...args) {
-  if (Array.isArray(args[0])) args = args[0];
-  if (args.length === 0) return 0;
-  let product = args.reduce((total, value) => total * value, 1);
-  return product;
+const multiply = function (a) {
+  return a.reduce((product, num) => product * num)
 };
 
-const power = function (base, exponent) {
-  let product = base;
-  for (i = 1; i < exponent; i++) {
-    product *= base;
-  }
-  return product;
+const power = function (base, exp) {
+  return Math.pow(base, exp)
 };
 
 const factorial = function (num) {
